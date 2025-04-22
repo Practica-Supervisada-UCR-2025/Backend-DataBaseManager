@@ -1,0 +1,3 @@
+.env
+digitalOcean-ca-certificate.crt
+node_modules

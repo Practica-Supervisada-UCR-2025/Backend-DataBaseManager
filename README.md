@@ -38,6 +38,13 @@ Run the following command:
 npm install pg @types/pg dotenv
 ```
 
+### Install Knex.js
+Run the following command:
+```
+npm install express knex pg dotenv
+npm install --save-dev nodemon
+```
+
 ## Folder Structure
 - `src/`: Contains the application source code.
    - `features/users/`: Includes controllers, DTOs, middleware, routes, and services for user-related functionality.
@@ -49,5 +56,52 @@ Currently, the application does not have defined scripts for running the server 
 - Start the server: `"start": "npx ts-node src/app"`
 - Run tests: `"test": "npx jest"`
 
+## Using Migrations with Knex
+### Creating a Migration
+To create a new migration file, use the following command:
+```bash
+npx knex migrate:make migration_name
+```
+Replace `migration_name` with a descriptive name for your migration. This migrations will be created in `/src/bd/migrations/`.
+
+### Writing a Migration
+In the generated migration file, you will find two functions: `up` and `down`. Use the `up` function to define the changes to apply to the database (e.g., creating tables, adding columns). Use the `down` function to define how to revert those changes.
+
+Example:
+```javascript
+exports.up = function(knex) {
+  return knex.schema.createTable('users', function(table) {
+    table.increments('id').primary();
+    table.string('name').notNullable();
+    table.string('email').unique().notNullable();
+    table.timestamps(true, true);
+  });
+};
+
+exports.down = function(knex) {
+  return knex.schema.dropTable('users');
+};
+```
+
+### Running Migrations
+To apply all pending migrations, run:
+```bash
+npx knex migrate:latest
+```
+
+### Rolling Back Migrations
+To rollback the last batch of migrations, use:
+```bash
+npx knex migrate:rollback
+```
+
+## Example of .env
+```
+DB_HOST=host
+DB_USER=user
+DB_PASS=password
+DB_NAME=name
+DB_PORT=port
+```
 ## Documentation
 Refer to the [ER Diagram](docs/ER_Diagram3.md) for the database schema.
