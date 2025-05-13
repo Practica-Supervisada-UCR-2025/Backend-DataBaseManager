@@ -1,6 +1,6 @@
 # Backend-MS-Base
 
-[![codecov](https://codecov.io/gh/Practica-Supervisada-UCR-2025/Backend-MS-Base/graph/badge.svg?token=M29OG2XDU6)](https://codecov.io/gh/Practica-Supervisada-UCR-2025/Backend-MS-Base)
+[![codecov](https://codecov.io/github/Practica-Supervisada-UCR-2025/Backend-DataBaseManager/graph/badge.svg?token=R1xlzy1Sjj)](https://codecov.io/github/Practica-Supervisada-UCR-2025/Backend-DataBaseManager)
 
 ## Project Overview
 Backend-MS-Base is a foundational backend service built with Node.js and TypeScript. It provides a modular structure for managing features like user authentication, database interactions, and API routing.
