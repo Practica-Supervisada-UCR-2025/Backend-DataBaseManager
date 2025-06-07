@@ -1,6 +1,7 @@
 import { Knex } from 'knex';
 import dotenv from 'dotenv';
 import fs from 'fs';
+import path from 'path';
 dotenv.config();
 
 const config: { [key: string]: Knex.Config } = {
@@ -13,7 +14,7 @@ const config: { [key: string]: Knex.Config } = {
       database: process.env.DB_NAME,
       port: Number(process.env.DB_PORT),
       ssl: {
-        ca: fs.readFileSync('digitalOcean-ca-certificate.crt').toString()
+        ca: fs.readFileSync(path.join(__dirname, 'certs','digitalOcean-ca-certificate.crt')).toString()
       }
     },
     migrations: {
