@@ -29,6 +29,10 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v4
 
+      - name: Create .env file
+        run: |
+          echo "${{ secrets.ANY_ENV_FILE }}" > .env
+
       - name: Install dependencies
         run: npm install
         
